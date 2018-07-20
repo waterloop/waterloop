@@ -57,24 +57,68 @@ be placed in a test folder according to [wio].
 
 Style guidelines are not overly strict. The important thing is that code is clear and readable with an appropriate amount of whitespace and reasonable length lines. A few best practices are also mentioned.
 
+## Copyright comment.
+First line of every file should be the following comment of copyright (update the year). 
+```cpp
+// Copyright 2018 Waterloop.
+```
+
+We can always find the author by `git blame` or looking up the `commit author`.
+
 ## Keep lines 90 characters length.
-This is based on the fact that back in the day 80 characters used to be standard, but now we have bigger screens, hence we should use them.
+This is based on the fact that back in the day 80 characters used to be standard, but now we have bigger screens so we should use them. 100 characters with a medium size font tends to go past more than half the screen for most computers (even a 17" screen). Hence we have 90 that is greater than 80 and less than 100 (perfectly balanced).
+
+
+## Files:
+ * Main files (files with a main function in it) should always be named `main.cpp`. Main files should not have any other additional logic in them.
+
+ * Other than a `main.cpp` or `main.hpp` file, rest should all be pascal case.
+
+ * Each file should only define and implement one class within them. 
+
+ * If the file has only a namespace within (for example only has helper functions) then name the file something meaningfull in PascalCase.
+
+ * Files should be named same as the class they implement with a `.hpp` or `.cpp` appended.
+
+ Example: The header file will be called `MyClass.hpp`:
+```MyClass.cpp
+class MyClass {
+
+public:
+
+    int s_data;
+
+    MyClass(int data);
+
+    int getData() const;
+
+private:
+
+    int m_data;
+
+};
+```
 
 ## Descriptive and Consistent Naming.
 
-C++ allows for arbitrary length identifier names, so there's no reason to be terse when naming variables. Use descriptive names, and be consistent in the style
+C++ allows for arbitrary length identifier names, so there's no reason to be terse when naming variables. Use descriptive names, and be consistent in the style.
 
- * `camelCase`
- * `PascalCase`
- * `CAPITAL_SNAKE_CASE`
- * `snake_case`
+## Style Terminology Table:
 
-are common examples. snake_case has the advantage that it can also work with spell checkers, if desired.
+| Style Name            | Single Word Example | Multi Word Example |
+| :-------------------: | :-----------------: | :----------------: |
+| `camelCase`           | waterloop           | waterloopIsCool    |
+| `PascalCase`          | Waterloop           | WaterloopIsCool    |
+| `snake_case`          | waterloop           | waterloop_is_cool  |
+| `Pascal_Snake_Case`   | Waterloop           | Waterloop_Is_Cool  |
+| `CAPITAL_SNAKE_CASE`  | WATERLOOP           | WATERLOOP_IS_COOL  |
+| `hyphen-case`         | waterloop           | waterloop-is-cool  |
+
 
 ### Common C++ Naming Conventions.
 
- * Types are PascalCase: `MyClass`
- * Functions and variables are camelCase: `myMethod`
+ * Types/Classes/Structs are PascalCase: `MyClass`
+ * Functions, variables and arguments are camelCase: `myMethod`
  * Macros are CAPTIAL_SNAKE_CASE: `#define MY_PI 3.14159265358979323`
 
 *Note that the C++ standard does not follow any of these guidelines. Everything in the standard is lowercase only.*
@@ -140,12 +184,51 @@ int myFunc() {
 
 which would be impossible if the function comment header used `/* */`
 
+## Doxygen Comments.
+Must use Doxygen comments in the header files.
+```cpp
+
+/// Use `///` instead of  `//!`.
+int myFunc();
+
+/// Avoid blocks:`
+    /*!
+      BAD STYLE
+    */
+```
+
+
 ## Never Use `using` In a Header File.
 
 This causes the name space you are `using` to be pulled into the namespace of the header file.
 
+## Never have private or protected in a struct.
+If there is a need for logic. Or a need for private / protected then use a class.
+
+## Class
+
+### Ordering public, protected, private
+
+Always order your classes in the following order:
+
+1) public
+2) protected
+3) private
+
+This is because the user should first always see the public data rather than the private logic.
+
+### Try to have no implementations, in the header files.
+This can save us from pulling in extra dependencies.
+
+Implement the class in the source file `.cpp`, avoid implementing in the header file.
+
+### If using a default generated class function declare it `default`.
+
+### If not using a default generated function for the class then declare it `delete`.
 
 ## Include Guards.
+
+If available try to use `#pragma once` to avoid name collision.
 
 Header files must contain an distinctly named include guard to avoid problems with including the same header multiple times or conflicting with other headers from other projects.
 
@@ -187,7 +270,7 @@ public:
   {
   }
 
-  std::string get_value() const
+  std::string getValue() const
   {
     return m_value;
   }
@@ -205,7 +288,7 @@ public:
     : m_value(value) {
   }
 
-  std::string get_value() const {
+  std::string getValue() const {
     return m_value;
   }
 
@@ -369,6 +452,25 @@ This is a proactive approach to simplify compilation time and rebuilding depende
 
 There is almost never a reason to declare an identifier in the global namespaces. Instead, functions and classes should exist in an appropriately named namespaces or in a class inside of a namespace. Identifiers which are placed in the global namespace risk conflicting with identifiers from other (mostly C, which doesn't have namespaces) libraries.
 
+## Namespaces must be snake_case, but try to keep it one word.
+Example:
+```cpp
+// Bad
+namespace myProject {
+
+}
+
+// Good
+namespace my_project {
+
+}
+
+// Great
+namespace project {
+
+}
+```
+
 ## Avoid Compiler Macros.
 
 Compiler definitions and macros are replaced by the pre-processor before the compiler is ever run. This can make debugging very difficult because the debugger doesn't know where the source came from.
@@ -477,7 +579,7 @@ public:
     : m_value(value) {
   }
 
-  std::string get_value() {
+  std::string getValue() {
     return m_value;
   }
 
@@ -497,7 +599,7 @@ public:
     : m_value(value) {
   }
 
-  std::string get_value() const {
+  std::string getValue() const {
     return m_value;
   }
 

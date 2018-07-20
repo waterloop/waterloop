@@ -1,2 +1,2 @@
-# C++ Style Guide.
+# Git Style Guide.
 
