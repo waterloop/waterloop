@@ -33,6 +33,10 @@
 [mpu6050]: https://github.com/waterloop/mpu6050
 [waterloop]: https://github.com/waterloop/waterloop
 
+### Current architechture.
+
+![Architechture](Architechture.jpg)
+* TODO: Every technical repository should be mapped onto the overall architechture.
 
 ### Repository Overview Table For Waterloop:
 
