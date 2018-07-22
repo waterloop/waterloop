@@ -1,0 +1,1 @@
+# Bash Style Guide.

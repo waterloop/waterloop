@@ -1,5 +1,5 @@
-[C++ Style Guide]: (c++.md)
-[Wio Style Guide]: (wio.md)
+[C++ Style Guide]: c++.md
+[Wio Style Guide]: wio.md
 
 # General Style Guide.
 
