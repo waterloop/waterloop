@@ -5,9 +5,14 @@
 - Enforce git flow, i.e: use feature branchs based off of develop (that stays clean).
 
 - So using git-flow our branch names if they are features should be of the
-form: feature/FEATURE_NAME or feature/GITLAB_BRANCH_ID
+form: feature/[GITLAB_ID]-[FEATURE_NAME], where [GITLAB_ID] is the id of branch gitlab gives
+you and [FEATURE_NAME] is the name of your feature.
+For example: feature/#e6gmr-websocket-server
 
-- If branches are bugfix branches then name them like this: bugfix/FIX_BLAH_ISSUE
+- If branches are bugfix branches then name them like
+this: feature/[GITLAB_ID]-[DESCRIPTION] where [GITLAB_ID] is the id of branch gitlab gives
+you and [DESCRIPTION] is the description of the bug.
+For example: bugfix/#b9hqk-segfault-crash
 
 ## Use Git Flow.
 
