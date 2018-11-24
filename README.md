@@ -35,7 +35,7 @@
 
 ### Current architechture.
 
-![Architechture](Architechture.jpg)
+![Architechture](img/Architechture.jpg)
 * TODO: Every technical repository should be mapped onto the overall architechture.
 
 ### Repository Overview Table For Waterloop:

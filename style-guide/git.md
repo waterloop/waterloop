@@ -16,6 +16,7 @@ https://nvie.com/posts/a-successful-git-branching-model/
 
 Brief summary:
 
+![GitFlow](../img/gitflow.png)
 
 INIT:
 
