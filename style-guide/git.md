@@ -3,8 +3,6 @@
 - All repository names should be `hyphen-case`, try to keep the names short and meaningfull.
 - Enforce git flow, i.e: use feature branchs based off of develop (that stays clean).
 
-========
-
 ## Use Git Flow.
 
 - Here is a good walkthrough: 
@@ -15,8 +13,6 @@ http://danielkummer.github.io/git-flow-cheatsheet/
 
 - Also a good read:
 https://nvie.com/posts/a-successful-git-branching-model/
-
-========
 
 Brief summary:
 
@@ -97,4 +93,3 @@ usage: git flow hotfix [list] [-v]
        git flow hotfix start [-F] <version> [<base>]
        git flow hotfix finish [-Fsumpk] <version>
 ```
-========
