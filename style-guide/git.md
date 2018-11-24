@@ -1,7 +1,13 @@
 # Git Style Guide.
 
 - All repository names should be `hyphen-case`, try to keep the names short and meaningfull.
+
 - Enforce git flow, i.e: use feature branchs based off of develop (that stays clean).
+
+- So using git-flow our branch names if they are features should be of the
+form: feature/FEATURE_NAME or feature/GITLAB_BRANCH_ID
+
+- If branches are bugfix branches then name them like this: bugfix/FIX_BLAH_ISSUE
 
 ## Use Git Flow.
 
