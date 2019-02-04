@@ -30,6 +30,6 @@ This should be depend on the type of file it is. For example:
 Find a way to put this on top of any file `Copyright 2018 Waterloop` rather than the author names.
 For example first line in a c++ file according to [C++ Style Guide] should be:
 ```cpp
-// Copyright 2018 Waterloop.
+// Copyright 2019 Waterloop.
 ```
 
